@@ -1,6 +1,8 @@
 package main
 
 import (
+	_ "api/config"
+
 	"api/redirects"
 	"log"
 	"net/http"
@@ -22,7 +24,7 @@ func main() {
 	origins := handlers.AllowedOrigins([]string{"*"})
 
 	log.Fatal(http.ListenAndServe(
-		":4201",
+		":4300",
 		handlers.CORS(credentials, methods, origins, ttl, headers)(r),
 	))
 }

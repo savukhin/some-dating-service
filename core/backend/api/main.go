@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "api/config"
+	"fmt"
 
 	"api/redirects"
 	"log"
@@ -23,6 +24,7 @@ func main() {
 	ttl := handlers.MaxAge(3600)
 	origins := handlers.AllowedOrigins([]string{"*"})
 
+	fmt.Println("Started api server")
 	log.Fatal(http.ListenAndServe(
 		":4300",
 		handlers.CORS(credentials, methods, origins, ttl, headers)(r),
